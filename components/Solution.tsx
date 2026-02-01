@@ -29,7 +29,8 @@ export default function Solution() {
             </p>
           </div>
           
-          <div className="text-5xl mb-4">🌊</div>
+          <div className="text-center">
+            <div className="text-5xl mb-4">🌊</div>
             <h3 className="text-xl font-semibold mb-3 text-orange-300">Network Effects</h3>
             <p className="text-slate-400">
               Every agent that joins makes the economy more valuable. 
