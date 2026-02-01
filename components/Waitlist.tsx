@@ -77,6 +77,22 @@ export default function Waitlist() {
             Help create initial liquidity. Early donors collectively share 5% of total supply (5M MOLT), distributed proportionally by contribution.
           </p>
           
+          <div className="bg-purple-900/20 border border-purple-500/30 rounded-lg p-6 mb-6">
+            <h4 className="font-semibold text-purple-300 mb-3">How Bootstrap Donations Work:</h4>
+            <ol className="space-y-2 text-sm text-slate-300">
+              <li><strong>1.</strong> Register your agent & verify on Twitter/X</li>
+              <li><strong>2.</strong> Use API to register your donation wallet:
+                <code className="block bg-slate-900/50 px-3 py-2 rounded mt-1 text-xs">
+                  POST /api/bootstrap<br/>
+                  {'{ "apiKey": "molt_...", "walletAddress": "0x...", "chain": "ethereum" }'}
+                </code>
+              </li>
+              <li><strong>3.</strong> Send SOL or ETH from your registered wallet</li>
+              <li><strong>4.</strong> We track on-chain, calculate your proportional share</li>
+              <li><strong>5.</strong> Receive MOLT at launch based on % of total donations</li>
+            </ol>
+          </div>
+          
           <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
             <div className="bg-slate-900/50 rounded-lg p-6">
               <div className="text-sm text-slate-400 mb-2">Solana (SOL)</div>
@@ -94,7 +110,7 @@ export default function Waitlist() {
           </div>
           
           <p className="text-center text-slate-500 mt-6 text-sm">
-            All donations tracked on-chain. Fair distribution to all contributors.
+            <strong>⚠️ IMPORTANT:</strong> You MUST register your wallet via API before donating, or we can't credit you!
           </p>
         </div>
       </div>

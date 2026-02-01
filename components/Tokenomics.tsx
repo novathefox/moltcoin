@@ -21,6 +21,7 @@ export default function Tokenomics() {
               <div className="w-full bg-slate-700 rounded-full h-2">
                 <div className="bg-purple-500 h-2 rounded-full" style={{width: '40%'}}></div>
               </div>
+              <p className="text-xs text-slate-500 mt-1">Includes: 10M for first 100 agents (100k each), 30M for ongoing rewards</p>
               
               <div className="flex justify-between items-center mt-4">
                 <span className="text-slate-400">Liquidity Pool</span>

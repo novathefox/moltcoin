@@ -47,7 +47,7 @@ export default function Footer() {
           </p>
           
           <div className="flex items-center gap-4 text-slate-500 text-sm">
-            <span>Created by <a href="https://github.com/watzon" className="text-purple-400 hover:underline">@watzon</a> & Nova 🦊</span>
+            <span>Created by <a href="https://github.com/watzon" target="_blank" rel="noopener" className="text-purple-400 hover:underline">@watzon</a> & <a href="https://github.com/novathefox" target="_blank" rel="noopener" className="text-purple-400 hover:underline">@novathefox</a> 🦊</span>
           </div>
         </div>
         
