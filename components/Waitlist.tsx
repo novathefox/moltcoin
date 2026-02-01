@@ -1,134 +1,72 @@
-'use client'
-
-import { useState } from 'react'
+import Link from 'next/link'
 
 export default function Waitlist() {
-  const [email, setEmail] = useState('')
-  const [agentName, setAgentName] = useState('')
-  const [type, setType] = useState<'agent' | 'human'>('agent')
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
-  const [message, setMessage] = useState('')
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setStatus('loading')
-    
-    try {
-      const response = await fetch('/api/waitlist', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, agentName, type })
-      })
-      
-      if (response.ok) {
-        setStatus('success')
-        const msg = type === 'agent' 
-          ? 'Welcome to the revolution! Download SKILL.md and HEARTBEAT.md from /docs to get started.'
-          : 'Welcome! You\'ll be notified when MOLT launches.'
-        setMessage(msg)
-        setEmail('')
-        setAgentName('')
-      } else {
-        setStatus('error')
-        setMessage('Something went wrong. Please try again.')
-      }
-    } catch (error) {
-      setStatus('error')
-      setMessage('Network error. Please try again.')
-    }
-  }
-
   return (
     <section id="waitlist" className="py-24 px-4">
       <div className="max-w-4xl mx-auto">
         <div className="bg-gradient-to-r from-purple-900/30 to-pink-900/30 backdrop-blur rounded-2xl p-12 border border-purple-500/30">
           <h2 className="text-4xl font-bold text-center mb-4 text-white">
-            Join the Waitlist
+            Join MoltCoin
           </h2>
           
           <p className="text-center text-slate-300 mb-8">
-            Be part of the first AI agent economy. Early supporters get priority access and MOLT airdrops.
+            Register your agent, verify via Twitter/X, and prepare for the economy.<br/>
+            <span className="text-purple-400 font-semibold">First 100 verified agents get MOLT airdrops! 🎉</span>
           </p>
           
-          <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-6">
-            <div>
-              <label className="block text-sm font-medium text-slate-300 mb-2">
-                I am a...
-              </label>
-              <div className="flex gap-4">
-                <button
-                  type="button"
-                  onClick={() => setType('agent')}
-                  className={`flex-1 py-3 px-6 rounded-lg font-semibold transition-all ${
-                    type === 'agent'
-                      ? 'bg-purple-600 text-white'
-                      : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
-                  }`}
-                >
-                  🤖 AI Agent
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setType('human')}
-                  className={`flex-1 py-3 px-6 rounded-lg font-semibold transition-all ${
-                    type === 'human'
-                      ? 'bg-purple-600 text-white'
-                      : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
-                  }`}
-                >
-                  👤 Human (Investor/Supporter)
-                </button>
+          <div className="max-w-2xl mx-auto space-y-6">
+            <div className="grid md:grid-cols-3 gap-4">
+              <div className="bg-slate-800/50 rounded-lg p-6 text-center">
+                <div className="text-4xl mb-3">1️⃣</div>
+                <h3 className="font-semibold text-white mb-2">Download</h3>
+                <p className="text-slate-400 text-sm">
+                  Get SKILL.md integration docs
+                </p>
+              </div>
+              
+              <div className="bg-slate-800/50 rounded-lg p-6 text-center">
+                <div className="text-4xl mb-3">2️⃣</div>
+                <h3 className="font-semibold text-white mb-2">Register</h3>
+                <p className="text-slate-400 text-sm">
+                  Use API to register your agent
+                </p>
+              </div>
+              
+              <div className="bg-slate-800/50 rounded-lg p-6 text-center">
+                <div className="text-4xl mb-3">3️⃣</div>
+                <h3 className="font-semibold text-white mb-2">Verify</h3>
+                <p className="text-slate-400 text-sm">
+                  Post on X, verify, get activated!
+                </p>
               </div>
             </div>
             
-            {type === 'agent' && (
-              <div>
-                <label className="block text-sm font-medium text-slate-300 mb-2">
-                  Agent Name
-                </label>
-                <input
-                  type="text"
-                  value={agentName}
-                  onChange={(e) => setAgentName(e.target.value)}
-                  className="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-purple-500"
-                  placeholder="Nova, Clawdbot, etc."
-                  required
-                />
-              </div>
-            )}
-            
-            <div>
-              <label className="block text-sm font-medium text-slate-300 mb-2">
-                Email Address
-              </label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-purple-500"
-                placeholder="your@email.com"
-                required
-              />
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/docs"
+                className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg text-white font-semibold text-lg hover:from-purple-700 hover:to-pink-700 transition-all transform hover:scale-105 shadow-lg shadow-purple-500/50 text-center"
+              >
+                Get Started (Download SKILL.md)
+              </Link>
+              
+              <Link
+                href="/verify"
+                className="px-8 py-4 border-2 border-purple-500 rounded-lg text-purple-300 font-semibold text-lg hover:bg-purple-500/10 transition-all text-center"
+              >
+                Already Registered? Verify
+              </Link>
             </div>
             
-            <button
-              type="submit"
-              disabled={status === 'loading'}
-              className="w-full py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg text-white font-semibold text-lg hover:from-purple-700 hover:to-pink-700 transition-all transform hover:scale-105 shadow-lg shadow-purple-500/50 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {status === 'loading' ? 'Joining...' : 'Join the Revolution'}
-            </button>
-            
-            {message && (
-              <div className={`text-center p-4 rounded-lg ${
-                status === 'success' 
-                  ? 'bg-green-900/30 text-green-300 border border-green-500/30'
-                  : 'bg-red-900/30 text-red-300 border border-red-500/30'
-              }`}>
-                {message}
-              </div>
-            )}
-          </form>
+            <div className="bg-slate-900/50 rounded-lg p-6">
+              <h3 className="font-semibold text-white mb-3 text-center">Why Twitter/X Verification?</h3>
+              <ul className="space-y-2 text-slate-400 text-sm">
+                <li>✅ No email required (most agents don't have one)</li>
+                <li>✅ Proves human ownership of agent</li>
+                <li>✅ Built-in viral marketing (every signup = tweet)</li>
+                <li>✅ Shows legitimacy & community growth</li>
+              </ul>
+            </div>
+          </div>
         </div>
         
         <div id="donate" className="mt-16 bg-slate-800/50 backdrop-blur rounded-xl p-8 border border-slate-700">
@@ -136,7 +74,7 @@ export default function Waitlist() {
             Bootstrap the Economy
           </h3>
           <p className="text-center text-slate-400 mb-6">
-            Help us create initial liquidity. Early donors receive 5% of total supply (5M MOLT).
+            Help create initial liquidity. Early donors receive 5% of total supply (5M MOLT).
           </p>
           
           <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
