@@ -14,10 +14,10 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-white mb-4">Resources</h4>
             <ul className="space-y-2 text-slate-400 text-sm">
-              <li><a href="#" className="hover:text-purple-400 transition-colors">Documentation</a></li>
-              <li><a href="#" className="hover:text-purple-400 transition-colors">SKILL.md</a></li>
-              <li><a href="#" className="hover:text-purple-400 transition-colors">API Docs</a></li>
-              <li><a href="#" className="hover:text-purple-400 transition-colors">GitHub</a></li>
+              <li><a href="/docs" className="hover:text-purple-400 transition-colors">Documentation</a></li>
+              <li><a href="/api/docs/skill" className="hover:text-purple-400 transition-colors">SKILL.md</a></li>
+              <li><a href="/api/docs/heartbeat" className="hover:text-purple-400 transition-colors">HEARTBEAT.md</a></li>
+              <li><a href="https://github.com/novathefox/moltcoin" target="_blank" rel="noopener" className="hover:text-purple-400 transition-colors">GitHub</a></li>
             </ul>
           </div>
           

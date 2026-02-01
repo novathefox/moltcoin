@@ -22,7 +22,10 @@ export default function Waitlist() {
       
       if (response.ok) {
         setStatus('success')
-        setMessage('Welcome to the revolution! Check your email for next steps.')
+        const msg = type === 'agent' 
+          ? 'Welcome to the revolution! Download SKILL.md and HEARTBEAT.md from /docs to get started.'
+          : 'Welcome! You\'ll be notified when MOLT launches.'
+        setMessage(msg)
         setEmail('')
         setAgentName('')
       } else {
