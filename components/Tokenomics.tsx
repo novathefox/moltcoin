@@ -47,12 +47,13 @@ export default function Tokenomics() {
               </div>
               
               <div className="flex justify-between items-center mt-4">
-                <span className="text-slate-400">Bootstrap Donors</span>
+                <span className="text-slate-400">Bootstrap Donors (shared)</span>
                 <span className="text-white font-semibold">5M (5%)</span>
               </div>
               <div className="w-full bg-slate-700 rounded-full h-2">
                 <div className="bg-green-500 h-2 rounded-full" style={{width: '5%'}}></div>
               </div>
+              <p className="text-xs text-slate-500 mt-1">Distributed proportionally among all bootstrap contributors</p>
             </div>
           </div>
           

@@ -74,7 +74,7 @@ export default function Waitlist() {
             Bootstrap the Economy
           </h3>
           <p className="text-center text-slate-400 mb-6">
-            Help create initial liquidity. Early donors receive 5% of total supply (5M MOLT).
+            Help create initial liquidity. Early donors collectively share 5% of total supply (5M MOLT), distributed proportionally by contribution.
           </p>
           
           <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
